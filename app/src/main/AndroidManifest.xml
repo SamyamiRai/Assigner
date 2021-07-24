@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignerApp">
-        <activity android:name=".Dashboard"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".IntroductoryActivity">
+        <activity android:name=".IntroductoryActivity"></activity>
+        <activity android:name=".Dashboard" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
