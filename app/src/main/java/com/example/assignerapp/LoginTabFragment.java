@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -63,6 +64,7 @@ public class LoginTabFragment extends Fragment {
             public void onClick(View view) {
                 String txt_email = email.getText().toString();
                 String txt_password = pass.getText().toString();
+
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     Toast.makeText(getActivity(), "Empty Credentials!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -70,16 +72,35 @@ public class LoginTabFragment extends Fragment {
                 }
             }
         });
+
     return root;
 }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null){
+            startActivity(new Intent(getActivity(),IntroductoryActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        }
+    }
+
     private void loginUser(String email, String password) {
+        String email_check_admin = email.toString();
+        String pwd_check_admin = pass.toString();
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+
                 Toast.makeText(getActivity(), "Login Successfull", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), Dashboard.class));
-                getActivity().finish();
+                if (email_check_admin == "admin@gmail.com" && pwd_check_admin == "admin123"){
+                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
+                    getActivity().finish();
+                }
+                else {
+                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
+                    getActivity().finish();
+                }
             }
 
         });
