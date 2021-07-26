@@ -81,7 +81,7 @@ public class LoginTabFragment extends Fragment {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null){
-            startActivity(new Intent(getActivity(),IntroductoryActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            startActivity(new Intent(getActivity(),Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
     }
 
@@ -94,11 +94,11 @@ public class LoginTabFragment extends Fragment {
 
                 Toast.makeText(getActivity(), "Login Successfull", Toast.LENGTH_SHORT).show();
                 if (email_check_admin == "admin@gmail.com" && pwd_check_admin == "admin123"){
-                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
+                    startActivity(new Intent(getActivity(), Dashboard.class));
                     getActivity().finish();
                 }
                 else {
-                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
+                    startActivity(new Intent(getActivity(), Dashboard.class));
                     getActivity().finish();
                 }
             }
