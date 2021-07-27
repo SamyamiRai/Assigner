@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="227dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+        android:background="@drawable/button_bg"
+        android:elevation="4dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="logout"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+
+    <TextView
+        android:id="@+id/contacttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/belgrano"
+        android:padding="10dp"
+        android:text="ADD NEW FACULTY"
+        android:textColor="@color/darkblue"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+
+    <EditText
+        android:id="@+id/faculty_id"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Faculty ID"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintWidth_percent=".8" />
+
+    <EditText
+        android:id="@+id/faculty_name"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="Name"
+        android:paddingLeft="20dp"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintHorizontal_bias=".5"
+        android:layout_marginTop="30dp"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/faculty_email"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintHorizontal_bias=".5"
+        android:background="@drawable/edit_text_bg"
+
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/faculty_dept"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:hint="Department"
+        android:paddingLeft="20dp"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintHorizontal_bias=".5"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edit_text_bg"
+        android:inputType="text" />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_bg"
+        android:text="SUBMIT"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

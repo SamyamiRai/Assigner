@@ -67,7 +67,9 @@ public class LoginTabFragment extends Fragment {
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     Toast.makeText(getActivity(), "Empty Credentials!", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if (txt_email.equals("admin@gmail.com") && txt_password.equals("admin123")) {
+                    loginAdmin(txt_email,txt_password);
+                }else {
                     loginUser(txt_email, txt_password);
                 }
             }
@@ -76,31 +78,40 @@ public class LoginTabFragment extends Fragment {
     return root;
 }
 
+    private void loginAdmin(String email, String password) {
+        auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(getActivity(), "Admin Login Successfull", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getActivity(), activity_contact_form.class));
+                getActivity().finish();
+            }
+        });
+
+    }
+
+
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null){
-            startActivity(new Intent(getActivity(),IntroductoryActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+
+        if (user == null) {
+
+        } else if (user.getEmail().toString().equals("admin@gmail.com")) {
+            startActivity(new Intent(getActivity(), activity_contact_form.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        } else {
+            startActivity(new Intent(getActivity(), Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
     }
-
     private void loginUser(String email, String password) {
-        String email_check_admin = email.toString();
-        String pwd_check_admin = pass.toString();
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-
                 Toast.makeText(getActivity(), "Login Successfull", Toast.LENGTH_SHORT).show();
-                if (email_check_admin == "admin@gmail.com" && pwd_check_admin == "admin123"){
-                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
+
+                    startActivity(new Intent(getActivity(), Dashboard.class));
                     getActivity().finish();
-                }
-                else {
-                    startActivity(new Intent(getActivity(), IntroductoryActivity.class));
-                    getActivity().finish();
-                }
             }
 
         });
