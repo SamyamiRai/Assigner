@@ -90,21 +90,40 @@
         android:inputType="text" />
 
 
+    <Button
+        android:id="@+id/add_image"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+        android:background="@drawable/button_bg"
+        android:elevation="4dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="upload image"
+        android:textColor="#fff"
+        android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/dynamic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
         android:background="@drawable/button_bg"
-        app:backgroundTint="@null"
-        android:textSize="16sp"
-        android:textStyle="bold"
         android:elevation="4dp"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
-        android:layout_margin="25dp"
         android:text="Submit"
-        android:textColor="#fff" />
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+
 </LinearLayout>
