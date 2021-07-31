@@ -95,6 +95,7 @@ public class activity_contact_form extends AppCompatActivity {
                 openImage();
             }
         });
+
     }
 
     private void openImage() {
@@ -150,9 +151,7 @@ public class activity_contact_form extends AppCompatActivity {
 //                                dynamic_url_text.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT));
 //                                dynamic_url_text.setText("URL");
 //                                setContentView(l1);
-                                TextView textView = (TextView)findViewById(R.id.dynamic);
-                                String display = "Image Uploaded";
-                                textView.setText(display);
+
                             }
                         });
                     }

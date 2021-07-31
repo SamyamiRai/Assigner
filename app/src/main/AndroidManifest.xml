@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignerApp">
-        <activity android:name=".activity_contact_form"></activity>
+        <activity android:name=".activity_faculty_list"></activity>
+        <activity android:name=".activity_contact_form" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".IntroductoryActivity">
@@ -20,6 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

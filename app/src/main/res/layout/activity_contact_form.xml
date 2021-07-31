@@ -104,12 +104,6 @@
         android:textColor="#fff"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/dynamic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
-
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"

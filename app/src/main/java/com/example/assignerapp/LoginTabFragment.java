@@ -83,7 +83,7 @@ public class LoginTabFragment extends Fragment {
             @Override
             public void onSuccess(AuthResult authResult) {
                 Toast.makeText(getActivity(), "Admin Login Successfull", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getActivity(), activity_contact_form.class));
+                startActivity(new Intent(getActivity(), activity_faculty_list.class));
                 getActivity().finish();
             }
         });
@@ -99,7 +99,7 @@ public class LoginTabFragment extends Fragment {
         if (user == null) {
 
         } else if (user.getEmail().toString().equals("admin@gmail.com")) {
-            startActivity(new Intent(getActivity(), activity_contact_form.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            startActivity(new Intent(getActivity(), activity_faculty_list.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         } else {
             startActivity(new Intent(getActivity(), Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         }
