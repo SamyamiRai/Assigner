@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignerApp">
-        <activity android:name=".activity_faculty_list"></activity>
+        <activity android:name=".cs_faculty_list"></activity>
+        <activity android:name=".activity_faculty_list" />
         <activity android:name=".activity_contact_form" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Dashboard" />

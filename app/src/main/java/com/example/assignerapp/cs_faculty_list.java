@@ -1,10 +1,7 @@
 package com.example.assignerapp;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,12 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -37,9 +28,9 @@ import com.google.firebase.storage.StorageReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class activity_faculty_list extends AppCompatActivity {
+public class cs_faculty_list extends AppCompatActivity {
+
     private Button logout;
     private ListView listView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -52,23 +43,21 @@ public class activity_faculty_list extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faculty_list);
-
-
+        setContentView(R.layout.activity_cs_faculty_list);
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(activity_faculty_list.this, "Logged Out!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(activity_faculty_list.this, LoginActivity.class));
+                Toast.makeText(cs_faculty_list.this, "Logged Out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(cs_faculty_list.this, LoginActivity.class));
             }
         });
         listView = findViewById(R.id.listView);
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
         listView.setAdapter(adapter);
-        FirebaseFirestore.getInstance().collection("faculties").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("faculties").whereEqualTo("Department","CSE").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -117,7 +106,7 @@ public class activity_faculty_list extends AppCompatActivity {
                 Log.d("Document this", item);
                 String clicked_fac_id = item.substring(0,3);
                 Log.d("Document this", clicked_fac_id);
-                Intent intent = new Intent(activity_faculty_list.this, LoginActivity.class);
+                Intent intent = new Intent(cs_faculty_list.this, LoginActivity.class);
 //                intent.putExtra("TEXT",text);
                 startActivity(intent);
             }
@@ -126,4 +115,3 @@ public class activity_faculty_list extends AppCompatActivity {
 
     }
 }
-//.whereEqualTo("Department","ISE")
