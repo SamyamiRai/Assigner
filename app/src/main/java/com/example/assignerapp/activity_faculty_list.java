@@ -74,7 +74,7 @@ public class activity_faculty_list extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for(QueryDocumentSnapshot doc :task.getResult()){
 //                        Log.d("Document", doc.getId()+ "=>" +doc.getData());
-                        list_data = doc.getString("id") +" "+doc.getString("Name") +" ("+ doc.getString("Department")+")     "+ doc.getString("Email");
+                        list_data = doc.getString("id") +"  "+doc.getString("Name") +"  ("+ doc.getString("Department")+")     "+ doc.getString("Email");
                         list.add(list_data);
                         fileRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                             @Override
