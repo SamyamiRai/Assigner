@@ -12,9 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignerapp.DRVinterface.LoadMore;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class LoadingViewHolder extends RecyclerView.ViewHolder{
@@ -45,6 +51,7 @@ public class DynamicRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     List<DynamicRvModel> items;
     int visibleThreshold=5;
     int lastVisibleItem,totalItemCount;
+    TextView tv;
 
     public DynamicRvAdapter(RecyclerView recyclerView, Activity activity, List<DynamicRvModel> items) {
         this.activity = activity;
@@ -79,12 +86,51 @@ public class DynamicRvAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @NotNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        if(viewType==VIEW_TYPE_ITEM){
-            View view= LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout,parent,false);
+
+
+        List<String> item_new = new ArrayList();
+        View view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout, parent, false);
+        if (viewType == VIEW_TYPE_ITEM) {
+            FirebaseFirestore.getInstance().collection("faculties").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                    View view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout, parent, false);
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            String list_data = doc.getString("id") + " " + doc.getString("Name") + " (" + doc.getString("Department") + ")     " + doc.getString("Email");
+
+//                        item_new.add(list_data);
+                            view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout, parent, false);
+
+//                      String data = item_new.get(i);
+                            tv = view.findViewById(R.id.name);
+                            tv.setText(list_data);
+//                        String data = doc.getId();
+//                        tv = view.findViewById(R.id.name);
+//                        tv.setText(data);
+
+                        }
+
+
+                    }
+
+                }
+
+
+            });
+//            View view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout, parent, false);
+//            for(int i=0;i<item_new.size();i++){
+//               View view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_item_layout, parent, false);
+
+//                String data = item_new.get(i);
+//                tv = view.findViewById(R.id.name);
+//                tv.setText(item_new.toString());
+//                item_new.remove(i);
+//            }
             return new LoadingViewHolder(view);
-        }
-        else if(viewType==VIEW_TYPE_LOADING){
-            View view= LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_progress_bar,parent,false);
+
+        } else if (viewType == VIEW_TYPE_LOADING) {
+            view = LayoutInflater.from(activity).inflate(R.layout.dynamic_rv_progress_bar, parent, false);
             return new LoadingViewHolder(view);
         }
         return null;

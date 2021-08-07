@@ -44,6 +44,9 @@ public class cs_faculty_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cs_faculty_list);
+
+        String dept = getIntent().getStringExtra("EXTRA_DEPT_NAME");
+
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +60,7 @@ public class cs_faculty_list extends AppCompatActivity {
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
         listView.setAdapter(adapter);
-        FirebaseFirestore.getInstance().collection("faculties").whereEqualTo("Department","CSE").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        FirebaseFirestore.getInstance().collection("faculties").whereEqualTo("Department",dept).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {

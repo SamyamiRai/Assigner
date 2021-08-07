@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Dashboard extends AppCompatActivity {
 
     private Button logout;
-    private RelativeLayout cs;
+    private RelativeLayout cs, is,ec,me,cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,43 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                i.putExtra("EXTRA_DEPT_NAME", "CSE");
+                startActivity(i);
+            }
+        });
+        is = findViewById(R.id.information_sc);
+        is.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(Dashboard.this, cs_faculty_list.class);
+                in.putExtra("EXTRA_DEPT_NAME", "ISE");
+                startActivity(in);
+            }
+        });
+        ec = findViewById(R.id.ec);
+        ec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                i.putExtra("EXTRA_DEPT_NAME", "ECE");
+                startActivity(i);
+            }
+        });
+        me = findViewById(R.id.me);
+        me.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                i.putExtra("EXTRA_DEPT_NAME", "ME");
+                startActivity(i);
+            }
+        });
+        cv = findViewById(R.id.cv);
+        cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                i.putExtra("EXTRA_DEPT_NAME", "CV");
                 startActivity(i);
             }
         });

@@ -109,7 +109,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:id="@+id/information_sc">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -156,7 +158,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:id="@+id/ec">
 
                 <ImageView
                     android:id="@+id/imageView6"
@@ -189,7 +193,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:id="@+id/me">
 
                 <ImageView
                     android:id="@+id/imageView7"
@@ -237,7 +243,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:id="@+id/cv">
 
                 <ImageView
                     android:id="@+id/imageView9"

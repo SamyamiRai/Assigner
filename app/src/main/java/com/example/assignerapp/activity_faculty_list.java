@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class activity_faculty_list extends AppCompatActivity {
-    private Button logout;
+    private Button logout, add_new_faculty;
     private ListView listView;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -74,7 +74,46 @@ public class activity_faculty_list extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for(QueryDocumentSnapshot doc :task.getResult()){
 //                        Log.d("Document", doc.getId()+ "=>" +doc.getData());
-                        list_data = doc.getString("id") +"  "+doc.getString("Name") +"  ("+ doc.getString("Department")+")     "+ doc.getString("Email");
+
+//                        6 char id, 13 char name, 3 char dept, 13 char email
+//                        StringBuilder spaces_id = new StringBuilder();
+//                        int count = 0;
+//                        if (doc.getString("id").length() > 0 )
+//                            count = 6 - doc.getString("id").length();
+//                        for(int i =0; i<count;i++ )
+//                            spaces_id.append(" ");
+
+//                        Log.d("Document","A"+doc.getString("id").length()+"b");
+
+//                        StringBuilder spaces_name = new StringBuilder();
+//                        if (doc.getString("Name").length() > 0 )
+//                            count = 13 - doc.getString("Name").length();
+//                        else
+//                            count = 0;
+//                        for(int i =0; i<count;i++ )
+//                            spaces_name.append(" ");
+//
+//                        StringBuilder spaces_dept = new StringBuilder();
+//                        if (doc.getString("Department").length() > 0 )
+//                            count = 3 - doc.getString("Department").length();
+//                        else
+//                            count = 0;
+//                        for(int i =0; i<count;i++ )
+//                            spaces_dept.append(" ");
+
+
+//                        String spaces_email = "";
+//                        for(int i =0; i<3 - doc.getString("id").length();i++ )
+//                            spaces_email = spaces_email + " ";
+
+//                        String name = doc.getString("Name");
+//                        int count = (15-doc.getString("Name").length());
+//                        for (int i = 0; i<count;i++)
+//                            name = name + " ";
+//                        Log.d("Document",name+"a");
+                        list_data = doc.getString("id") + "  "+ doc.getString("Department") +"  " + doc.getString("Name") +"  " + doc.getString("Email") ;
+
+
                         list.add(list_data);
                         fileRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                             @Override
@@ -122,6 +161,16 @@ public class activity_faculty_list extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        To add new factuly:
+//        add_new_faculty = findViewById(R.id.add_new_faculty);
+//        add_new_faculty.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(activity_faculty_list.this, activity_contact_form.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }
