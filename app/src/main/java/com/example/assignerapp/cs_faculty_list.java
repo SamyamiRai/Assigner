@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +30,12 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class cs_faculty_list extends AppCompatActivity {
@@ -47,6 +56,7 @@ public class cs_faculty_list extends AppCompatActivity {
 
         String dept = getIntent().getStringExtra("EXTRA_DEPT_NAME");
 
+
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +76,11 @@ public class cs_faculty_list extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for(QueryDocumentSnapshot doc :task.getResult()){
 //                        Log.d("Document", doc.getId()+ "=>" +doc.getData());
-                        list_data = doc.getString("id") +" "+doc.getString("Name") +" ("+ doc.getString("Department")+")     "+ doc.getString("Email");
+//                        list_data = doc.getString("id") +" "+doc.getString("Name") +" ("+ doc.getString("Department")+")     "+ doc.getString("Email");
+                        list_data = doc.getString("Name") +"("+ doc.getString("Department")+") "+ doc.getString("Email");
+
                         list.add(list_data);
+
                         fileRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
                             @Override
                             public void onSuccess(ListResult listResult) {
@@ -101,19 +114,45 @@ public class cs_faculty_list extends AppCompatActivity {
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            URL url;
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String text = "ABC";
                 String item = adapterView.getItemAtPosition(i).toString();
 
-                Log.d("Document this", item);
-                String clicked_fac_id = item.substring(0,3);
-                Log.d("Document this", clicked_fac_id);
-                Intent intent = new Intent(cs_faculty_list.this, LoginActivity.class);
-//                intent.putExtra("TEXT",text);
-                startActivity(intent);
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String text = "ABC";
+//                Object obj = listView.getAdapter().getItem(i);
+//                Uri uri = Uri.parse(obj.toString());
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                startActivity(intent);
+//
+                String item = adapterView.getItemAtPosition(i).toString();
+
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setType("text/plain");
+//                emailIntent.putExtra(Intent.ACTION_SENDTO, item);
+//                emailIntent.putExtra(Intent.EXTRA_EMAIL, item);
+                String lastWord = item.substring(item.lastIndexOf(" ")+1);
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { lastWord });
+                startActivity(emailIntent);
+
+                Log.d("Document this", String.valueOf(i));
+//                TextView t2 = (TextView) findViewById(R.id.text);
+//                t2.setMovementMethod(LinkMovementMethod.getInstance());
+
+//                String clicked_fac_id = item.substring(0,3);
+//                Log.d("Document this", clicked_fac_id);
+//                Intent intent = new Intent(cs_faculty_list.this, LoginActivity.class);
+////                intent.putExtra("TEXT",text);
+//                startActivity(intent);
+            }
+        });
+//        TextView t2 = (TextView) findViewById(R.id.text);
+//        t2.setMovementMethod(LinkMovementMethod.getInstance());
 
 
     }
