@@ -8,7 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,8 +31,8 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="607dp"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="68dp"
         android:divider="@drawable/loginbg"

@@ -6,17 +6,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,8 +44,11 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.net.Uri.fromFile;
 
 public class activity_faculty_list extends AppCompatActivity {
     private Button logout, add_new_faculty;
@@ -65,9 +76,15 @@ public class activity_faculty_list extends AppCompatActivity {
             }
         });
         listView = findViewById(R.id.listView);
+//        listView_img = findViewById(R.id.listView_img);
+//        ImageView image = (ImageView)findViewById(R.id.label);
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
+//        final ArrayList<FirebaseStorage> itemsimg = new ArrayList<FirebaseStorage>();
+//        final ArrayAdapter adapter_img = new ArrayAdapter<FirebaseStorage>(this,R.layout.list_img_item,itemsimg);
         listView.setAdapter(adapter);
+//        listView_img.setAdapter(adapter_img);
+
         FirebaseFirestore.getInstance().collection("faculties").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
@@ -126,8 +143,43 @@ public class activity_faculty_list extends AppCompatActivity {
 
                                 for (StorageReference item : listResult.getItems()) {
                                     // All the items under listRef.
-                                    if (item.getName() == doc.getId().toString()){
+//                                    itemsimg.add(item.getStorage());
+                                    File file = new File(item.getPath());
+                                    Uri imageURI = fromFile(file);
+                                    Log.d("content1",item.getName());
+
+                                    TextView txtview ;
+                                    txtview = findViewById(R.id.label);
+
+                                    Glide.with(getApplicationContext())
+                                            .load(imageURI)
+                                            .apply(RequestOptions.placeholderOf(R.drawable.background_design))
+                                            .into(new SimpleTarget<Drawable>() {
+                                                @Override
+                                                public void onResourceReady(@NonNull Drawable resource,
+                                                                            @Nullable Transition<? super Drawable> transition) {
+
+                                                    txtview.setCompoundDrawablesWithIntrinsicBounds(resource, null, null, null);
+
+                                                }
+                                            });
+
+//                                    Glide.with(getApplicationContext())
+//                                            .load(item.getDownloadUrl())
+//                                            .into(image)
+
+                                    if (item.getName().equals(doc.getId().toString())){
 //                                        image reference in item
+//                                        list.add(item.getDownloadUrl());
+//                                        Log.d("content",item.getName());
+//                                        itemsimg.add(item);
+//                                        listView_img.setAdapter(adapter_img);
+//                                        item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                            @Override
+//                                            public void onSuccess(Uri uri) {
+//                                                list.add(uri.toString());
+//                                            }
+//                                        });
                                     }
                                 }
                             }
@@ -135,6 +187,7 @@ public class activity_faculty_list extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull @NotNull Exception e) {
 
+                                Log.d("Failed","abc");
                             }
                         });
                     }
@@ -171,6 +224,7 @@ public class activity_faculty_list extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+
 
 
     }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,6 +130,9 @@ public class cs_faculty_list extends AppCompatActivity {
 //                Uri uri = Uri.parse(obj.toString());
 //                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 //                startActivity(intent);
+
+//                ImageView selectedImage = (ImageView) findViewById(R.id.image);
+//                selectedImage.setImageResource(R.drawable.cogwheels);
 //
                 String item = adapterView.getItemAtPosition(i).toString();
 
@@ -153,7 +157,7 @@ public class cs_faculty_list extends AppCompatActivity {
         });
 //        TextView t2 = (TextView) findViewById(R.id.text);
 //        t2.setMovementMethod(LinkMovementMethod.getInstance());
-
+//        t2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.analysis, 0, 0, 0);
 
     }
 }
