@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/label"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fontFamily="@font/belgrano"
-    android:textColor="@color/darkblue"
-    android:textSize="20sp" />
+    android:layout_width="wrap_content"
+    android:layout_height="85dp"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    app:layout_constraintHorizontal_bias=".1"
+    app:layout_constraintVertical_bias=".15"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+

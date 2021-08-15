@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -216,17 +217,20 @@ public class activity_faculty_list extends AppCompatActivity {
         });
 
 //        To add new factuly:
-//        add_new_faculty = findViewById(R.id.add_new_faculty);
-//        add_new_faculty.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(activity_faculty_list.this, activity_contact_form.class);
-//                startActivity(intent);
-//            }
-//        });
+        add_new_faculty = findViewById(R.id.add);
+        add_new_faculty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity_faculty_list.this, activity_contact_form.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 
     }
+
+
 }
 //.whereEqualTo("Department","ISE")

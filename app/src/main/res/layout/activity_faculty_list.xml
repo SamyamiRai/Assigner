@@ -8,9 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp" />
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -28,15 +28,28 @@
         android:layout_height="wrap_content"
         android:text="logout" />
 
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/logout"
+        android:text="Add" />
+
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="607dp"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="68dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:divider="@drawable/loginbg"
-        android:dividerHeight="3dp" />
+        android:dividerHeight="7dp" >
+
+
+    </ListView>
+
 
 
 
