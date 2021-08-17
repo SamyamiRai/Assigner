@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/label"
-    android:layout_width="wrap_content"
-    android:layout_height="85dp"
-    android:textSize="20dp"
-    android:textStyle="bold"
-    app:layout_constraintHorizontal_bias=".1"
-    app:layout_constraintVertical_bias=".15"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias=".1"
+        app:layout_constraintVertical_bias=".15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:singleLine="false"
+        android:focusable="false"/>
 
+    <Button
+        android:id="@+id/select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="91dp"
+        android:onClick="myClickHandler"
+        android:text="Mail"
+        android:focusable="false"></Button>
+
+    <Button
+        android:id="@+id/set_for_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-2dp"
+        android:onClick="myClickHandler"
+        android:text="assign"
+        android:focusable="false"></Button>
+
+</RelativeLayout>

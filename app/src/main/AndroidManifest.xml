@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AssignerApp">
+        <activity android:name=".connect_dept_faculties"></activity>
+        <activity android:name=".faculty_profile" />
         <activity android:name=".IntroductoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,13 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".cs_faculty_list" />
-        <activity android:name=".activity_faculty_list" />
         <activity android:name=".activity_contact_form" />
+        <activity android:name=".activity_faculty_list" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Dashboard" />
-<!--        <activity android:name=".IntroductoryActivity">-->
-
-<!--        </activity>-->
+        <activity android:name=".Dashboard" /> <!-- <activity android:name=".IntroductoryActivity"> -->
+        <!-- </activity> -->
         <activity android:name=".MainActivity" />
 
         <meta-data

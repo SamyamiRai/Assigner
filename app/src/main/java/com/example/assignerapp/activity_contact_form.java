@@ -37,9 +37,7 @@ import java.util.Map;
 
 public class activity_contact_form extends AppCompatActivity {
     private EditText id, name, email,dept;
-    private Button submit;
     String id_facuty;
-    private Button logout,add_image;
     private Uri imageUri;
     private static final int IMAGE_REQUEST = 2;
 
@@ -52,8 +50,8 @@ public class activity_contact_form extends AppCompatActivity {
         name = findViewById(R.id.faculty_name);
         email = findViewById(R.id.faculty_email);
         dept = findViewById(R.id.faculty_dept);
-        submit = findViewById(R.id.submit);
-        add_image = findViewById(R.id.add_image);
+        Button submit = findViewById(R.id.submit);
+        Button add_image = findViewById(R.id.add_image);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -78,16 +76,16 @@ public class activity_contact_form extends AppCompatActivity {
                 });
             }
         });
-        logout = findViewById(R.id.logout);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(activity_contact_form.this, "Logged Out!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(activity_contact_form.this, LoginActivity.class));
-            }
-        });
+//        Button logout = findViewById(R.id.logout);
+//
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FirebaseAuth.getInstance().signOut();
+//                Toast.makeText(activity_contact_form.this, "Logged Out!", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(activity_contact_form.this, LoginActivity.class));
+//            }
+//        });
 
         add_image.setOnClickListener(new View.OnClickListener() {
             @Override

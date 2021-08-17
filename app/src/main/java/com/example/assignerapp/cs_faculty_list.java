@@ -68,8 +68,20 @@ public class cs_faculty_list extends AppCompatActivity {
             }
         });
         listView = findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("Hello",view.toString());
+                Log.d("Hello1",listView.getItemAtPosition(i).toString());
+
+                Intent intent = new Intent(cs_faculty_list.this,faculty_profile.class);
+                intent.putExtra("FAC_DET",listView.getItemAtPosition(i).toString());
+                intent.putExtra("FAC_DEPT",dept);
+                startActivity(intent);
+            }
+        });
         final ArrayList<String> list = new ArrayList<>();
-        final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
+        final MyCustomAdpter adapter = new MyCustomAdpter(list, listView.getContext(),dept);
         listView.setAdapter(adapter);
         FirebaseFirestore.getInstance().collection("faculties").whereEqualTo("Department",dept).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -78,7 +90,7 @@ public class cs_faculty_list extends AppCompatActivity {
                     for(QueryDocumentSnapshot doc :task.getResult()){
 //                        Log.d("Document", doc.getId()+ "=>" +doc.getData());
 //                        list_data = doc.getString("id") +" "+doc.getString("Name") +" ("+ doc.getString("Department")+")     "+ doc.getString("Email");
-                        list_data = doc.getString("Name") +"("+ doc.getString("Department")+") "+ doc.getString("Email");
+                        list_data = doc.getString("Name") +" \n"+doc.getString("Email");
 
                         list.add(list_data);
 
@@ -114,17 +126,20 @@ public class cs_faculty_list extends AppCompatActivity {
                 }
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            URL url;
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = adapterView.getItemAtPosition(i).toString();
-
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            URL url;
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String item = adapterView.getItemAtPosition(i).toString();
+//                Log.d("See1",view.toString());
+//                Log.d("See1",item);
+//
+//            }
+//        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("See",view.toString());
 //                String text = "ABC";
 //                Object obj = listView.getAdapter().getItem(i);
 //                Uri uri = Uri.parse(obj.toString());
@@ -134,17 +149,17 @@ public class cs_faculty_list extends AppCompatActivity {
 //                ImageView selectedImage = (ImageView) findViewById(R.id.image);
 //                selectedImage.setImageResource(R.drawable.cogwheels);
 //
-                String item = adapterView.getItemAtPosition(i).toString();
-
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setType("text/plain");
-//                emailIntent.putExtra(Intent.ACTION_SENDTO, item);
-//                emailIntent.putExtra(Intent.EXTRA_EMAIL, item);
-                String lastWord = item.substring(item.lastIndexOf(" ")+1);
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { lastWord });
-                startActivity(emailIntent);
-
-                Log.d("Document this", String.valueOf(i));
+//                String item = adapterView.getItemAtPosition(i).toString();
+//
+//                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+//                emailIntent.setType("text/plain");
+////                emailIntent.putExtra(Intent.ACTION_SENDTO, item);
+////                emailIntent.putExtra(Intent.EXTRA_EMAIL, item);
+//                String lastWord = item.substring(item.lastIndexOf(" ")+1);
+//                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { lastWord });
+//                startActivity(emailIntent);
+//
+//                Log.d("Document this", String.valueOf(i));
 //                TextView t2 = (TextView) findViewById(R.id.text);
 //                t2.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -153,8 +168,8 @@ public class cs_faculty_list extends AppCompatActivity {
 //                Intent intent = new Intent(cs_faculty_list.this, LoginActivity.class);
 ////                intent.putExtra("TEXT",text);
 //                startActivity(intent);
-            }
-        });
+//            }
+//        });
 //        TextView t2 = (TextView) findViewById(R.id.text);
 //        t2.setMovementMethod(LinkMovementMethod.getInstance());
 //        t2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.analysis, 0, 0, 0);

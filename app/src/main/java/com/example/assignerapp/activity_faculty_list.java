@@ -217,12 +217,12 @@ public class activity_faculty_list extends AppCompatActivity {
         });
 
 //        To add new factuly:
-        add_new_faculty = findViewById(R.id.add);
+        add_new_faculty = findViewById(R.id.add_new);
         add_new_faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_faculty_list.this, activity_contact_form.class);
-                startActivity(intent);
+                Intent i = new Intent(activity_faculty_list.this, activity_contact_form.class);
+                startActivity(i);
 
             }
         });

@@ -36,7 +36,7 @@ public class Dashboard extends AppCompatActivity {
         cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                Intent i = new Intent(Dashboard.this, connect_dept_faculties.class);
                 i.putExtra("EXTRA_DEPT_NAME", "CSE");
                 startActivity(i);
             }
@@ -45,7 +45,7 @@ public class Dashboard extends AppCompatActivity {
         is.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(Dashboard.this, cs_faculty_list.class);
+                Intent in = new Intent(Dashboard.this, connect_dept_faculties.class);
                 in.putExtra("EXTRA_DEPT_NAME", "ISE");
                 startActivity(in);
             }
@@ -54,7 +54,7 @@ public class Dashboard extends AppCompatActivity {
         ec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                Intent i = new Intent(Dashboard.this, connect_dept_faculties.class);
                 i.putExtra("EXTRA_DEPT_NAME", "ECE");
                 startActivity(i);
             }
@@ -63,7 +63,7 @@ public class Dashboard extends AppCompatActivity {
         me.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                Intent i = new Intent(Dashboard.this, connect_dept_faculties.class);
                 i.putExtra("EXTRA_DEPT_NAME", "ME");
                 startActivity(i);
             }
@@ -72,7 +72,7 @@ public class Dashboard extends AppCompatActivity {
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Dashboard.this, cs_faculty_list.class);
+                Intent i = new Intent(Dashboard.this, connect_dept_faculties.class);
                 i.putExtra("EXTRA_DEPT_NAME", "CV");
                 startActivity(i);
             }

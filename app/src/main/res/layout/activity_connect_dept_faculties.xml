@@ -9,7 +9,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:text="Assign more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -28,22 +40,23 @@
 
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="498dp"
         android:layout_below="@+id/toolbar"
+        android:layout_marginTop="69dp"
         android:descendantFocusability="blocksDescendants"
         android:divider="@drawable/loginbg"
-        android:dividerHeight="10dp"/>
+        android:dividerHeight="10dp" />
 
 
-<!--    <ImageView-->
+    <!--    <ImageView-->
 
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:id="@+id/image"-->
-<!--        android:src="@drawable/background_design"-->
-<!--        android:layout_margin="5dp" />-->
+    <!--        android:layout_width="80dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:id="@+id/image"-->
+    <!--        android:src="@drawable/background_design"-->
+    <!--        android:layout_margin="5dp" />-->
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
