@@ -76,11 +76,11 @@ public class activity_faculty_list extends AppCompatActivity {
                 startActivity(new Intent(activity_faculty_list.this, LoginActivity.class));
             }
         });
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView_new);
 //        listView_img = findViewById(R.id.listView_img);
 //        ImageView image = (ImageView)findViewById(R.id.label);
         final ArrayList<String> list = new ArrayList<>();
-        final ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.list_item,list);
+        final AdminAdapter adapter = new AdminAdapter(list, listView.getContext());
 //        final ArrayList<FirebaseStorage> itemsimg = new ArrayList<FirebaseStorage>();
 //        final ArrayAdapter adapter_img = new ArrayAdapter<FirebaseStorage>(this,R.layout.list_img_item,itemsimg);
         listView.setAdapter(adapter);
@@ -129,7 +129,7 @@ public class activity_faculty_list extends AppCompatActivity {
 //                        for (int i = 0; i<count;i++)
 //                            name = name + " ";
 //                        Log.d("Document",name+"a");
-                        list_data = doc.getString("id") + "  "+ doc.getString("Department") +"  " + doc.getString("Name") +"  " + doc.getString("Email") ;
+                        list_data = doc.getString("id") + "  "+ doc.getString("Department") +"  " + doc.getString("Name")  ;
 
 
                         list.add(list_data);

@@ -71,6 +71,7 @@ public class activity_contact_form extends AppCompatActivity {
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(activity_contact_form.this, "Faculty Details Added", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(activity_contact_form.this,activity_faculty_list.class));
                         }
                     }
                 });
