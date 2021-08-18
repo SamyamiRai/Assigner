@@ -51,7 +51,6 @@ public class AdminAdapter extends BaseAdapter implements ListAdapter {
     @Override
     public long getItemId(int pos) {
         return pos;
-        //just return 0 if your list items do not have an Id variable.
     }
 
     @Override
@@ -62,13 +61,11 @@ public class AdminAdapter extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.item_admin_fac_list, null);
         }
 
-        //Handle TextView and display string from your list
         TextView name= (TextView)view.findViewById(R.id.label);
         name.setText(list.get(position));
 
-        //Handle buttons and add onClickListeners
         Button del= (Button)view.findViewById(R.id.del);
-//
+
         del.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -76,7 +73,6 @@ public class AdminAdapter extends BaseAdapter implements ListAdapter {
                 RelativeLayout rl = (RelativeLayout)(v.getParent());
                 TextView child = (TextView)rl.getChildAt(0);
                 String item = child.getText().toString();
-
                 String firstThreeChars = item.substring(0, 3);
                 Log.d("CCC",firstThreeChars);
                 FirebaseFirestore.getInstance().collection("faculties").document(firstThreeChars)
@@ -95,56 +91,8 @@ public class AdminAdapter extends BaseAdapter implements ListAdapter {
                             }
                         });
                 notifyDataSetChanged();
-
-//                context.startActivity();
-
-//                Log.d("Document this", String.valueOf(i));
-
             }
         });
-//        Button set_class= (Button)view.findViewById(R.id.set_for_class);
-//
-//        set_class.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                //do something
-//                RelativeLayout rl = (RelativeLayout)(v.getParent());
-//                TextView child = (TextView)rl.getChildAt(0);
-//                String item = child.getText().toString();
-//
-//                Log.d("Name of fac", dept.toString());
-//                String name = item.substring(0, item.lastIndexOf(" "));
-//                FirebaseFirestore db = FirebaseFirestore.getInstance();
-//                Map<String, Object> faculty = new HashMap<>();
-//                faculty.put("Name",name);
-//                faculty.put("Dept",dept.toString());
-//
-//                db.collection("Assigned").document(item).set(faculty).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(v.getContext(), "Assigned", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
-//
-//            }
-//        });
-//        ls = (ListView) view.findViewById(R.id.listView);
-//        ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Log.d("See2",view.toString());
-//            }
-//        });
-//        ls.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                //do something
-//                notifyDataSetChanged();
-//            }
-//        });
-
         return view;
     }
 }

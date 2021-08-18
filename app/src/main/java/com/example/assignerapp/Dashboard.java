@@ -12,17 +12,13 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Dashboard extends AppCompatActivity {
-
     private Button logout;
     private RelativeLayout cs, is,ec,me,cv;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
         logout = findViewById(R.id.logout);
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,7 +27,6 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(new Intent(Dashboard.this, LoginActivity.class));
             }
         });
-
         cs = findViewById(R.id.computer_sc);
         cs.setOnClickListener(new View.OnClickListener() {
             @Override

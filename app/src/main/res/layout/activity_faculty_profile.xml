@@ -1,68 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#3D5AFE"
-    >
+    android:background="@drawable/loginbg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.11" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.45"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.256" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/background_design"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:logo="@drawable/lists"
+            app:titleMarginStart="40dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/text2"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginStart="24dp"-->
+        <!--        android:layout_marginTop="44dp"-->
+        <!--        android:fontFamily="@font/original_surfer"-->
+        <!--        android:text="DEPARTMENTS"-->
+        <!--        android:textColor="@color/darkblue"-->
+        <!--        android:textSize="28sp"-->
+        <!--        android:textStyle="bold"-->
+        <!--        app:layout_constraintEnd_toStartOf="@+id/bookmark"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/toolbar"-->
+        <!--        app:layout_editor_absoluteY="56dp" />-->
+
 
         <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/bookmark"
+            android:layout_width="85dp"
+            android:layout_height="102dp"
+            android:layout_marginStart="113dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.234"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_editor_absoluteX="250dp"
+            app:layout_editor_absoluteY="250dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="22dp"
+            android:clickable="false"
+            android:elevation="20dp"
+            android:foregroundTint="#673AB7"
+            android:orientation="horizontal"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintTop_toBottomOf="@+id/bookmark">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                app:cardElevation="5dp">
+
+                <RelativeLayout
+                    android:id="@+id/computer_sc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false">
+
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imageView4"-->
+                    <!--                        android:layout_width="70dp"-->
+                    <!--                        android:layout_height="70dp"-->
+                    <!--                        android:layout_centerHorizontal="true"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        app:srcCompat="@drawable/personalcomputer" />-->
+
+                    <TextView
+                        android:id="@+id/id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="59dp"
+                        android:layout_marginEnd="152dp"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/id"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.45"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.256" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.949"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_design"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:logo="@drawable/lists"
-        app:titleMarginStart="40dp"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="logout" />
-
-
-
-</RelativeLayout>
+</ScrollView>

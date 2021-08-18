@@ -51,7 +51,7 @@ public class activity_contact_form extends AppCompatActivity {
         email = findViewById(R.id.faculty_email);
         dept = findViewById(R.id.faculty_dept);
         Button submit = findViewById(R.id.submit);
-        Button add_image = findViewById(R.id.add_image);
+//        Button add_image = findViewById(R.id.add_image);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -88,12 +88,12 @@ public class activity_contact_form extends AppCompatActivity {
 //            }
 //        });
 
-        add_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openImage();
-            }
-        });
+//        add_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openImage();
+//            }
+//        });
 
     }
 

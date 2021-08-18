@@ -76,19 +76,19 @@
         android:inputType="text" />
 
 
-    <Button
-        android:id="@+id/add_image"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="25dp"
-        android:background="@drawable/button_bg"
-        android:elevation="4dp"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
-        android:text="upload image"
-        android:textColor="#fff"
-        android:textSize="16sp" />
+<!--    <Button-->
+<!--        android:id="@+id/add_image"-->
+<!--        android:layout_width="235dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_margin="25dp"-->
+<!--        android:background="@drawable/button_bg"-->
+<!--        android:elevation="4dp"-->
+<!--        android:paddingLeft="70dp"-->
+<!--        android:paddingRight="70dp"-->
+<!--        android:text="upload image"-->
+<!--        android:textColor="#fff"-->
+<!--        android:textSize="16sp" />-->
 
     <Button
         android:id="@+id/submit"
